@@ -1,0 +1,112 @@
+import { useState, useEffect } from 'react';
+import { UserModal } from './UserModal';
+
+export const UserTable = () => {
+  // Estados para manejar los usuarios y la búsqueda
+  const [users, setUsers] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [search, setSearch] = useState('');
+  // Paginación
+  const [currentPage, setCurrentPage] = useState(1);
+  const usersPerPage = 5;
+
+  // Petición a la API de usuarios
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(data => {
+        setUsers(data);
+        setFilteredUsers(data);
+      });
+  }, []);
+
+  // Manejo de la búsqueda
+  const handleSearch = (e) => {
+    const value = e.target.value.toLowerCase();
+    setSearch(value);
+    const filtered = users.filter(user => user.name.toLowerCase().includes(value));
+    setFilteredUsers(filtered);
+    setCurrentPage(1); // Reinicia a la primera página cuando se busca algo nuevo
+  };
+
+  // Cálculo de paginación
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  return (
+    <div className="container d-flex flex-column align-items-center min-vh-100">
+      {/* Sección fija para el título y el input */}
+      <div className="fixed-header w-100">
+        <h2 className="text-center mt-3 mb-3 animated-title">Consulta de usuarios</h2>
+        <div className="row justify-content-center w-100 mb-3">
+          <div className="d-flex justify-content-center">
+            <input
+              style={{ border: "4px solid #ced4da" }}
+              type="text"
+              className="form-control search-input"
+              placeholder="Busca por nombre..."
+              value={search}
+              onChange={handleSearch}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Contenedor de la tabla */}
+      <div className="table-container">
+        <div className="table-responsive">
+          <table className="table table-bordered table-hover text-center">
+            <thead className="table-primary">
+              <tr>
+                <th>Nombre</th>
+                <th>Correo Electrónico</th>
+                <th>Compañía</th>
+                <th>Detalle</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentUsers.length > 0 ? (
+                currentUsers.map(user => (
+                  <tr key={user.id}>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>{user.company.name}</td>
+                    <td>
+                      <button className="btn btn-primary btn-sm" onClick={() => setSelectedUser(user)}>
+                       <i className="bi bi-eye-fill"></i>
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="4" className="no-results">No se encontraron usuarios con el nombre proporcionado!</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Paginador */}
+      {filteredUsers.length > usersPerPage && (
+        <nav>
+          <ul className="pagination">
+            {Array.from({ length: Math.ceil(filteredUsers.length / usersPerPage) }, (_, i) => (
+              <li key={i} className={`page-item ${currentPage === i + 1 ? 'active' : ''}`}>
+                <button onClick={() => paginate(i + 1)} className="page-link">
+                  {i + 1}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+
+      {selectedUser && <UserModal user={selectedUser} onClose={() => setSelectedUser(null)} />}
+    </div>
+  );
+};
