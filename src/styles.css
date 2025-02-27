@@ -1,72 +1,85 @@
-/* Estilos*/
-/* Asegurar que el contenedor ocupa toda la pantalla */
+/* Fondo con degradado*/
+body {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Contenedor principal */
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  text-align: center;
+}
+
+/* Input de búsqueda con bordes redondeados */
+.search-input {
+  border-radius: 20px;
+  border: 2px solid #ccc;
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.search-input:focus {
+  border-color: #2575fc;
+  box-shadow: 0 0 8px rgba(37, 117, 252, 0.5);
+}
+
+/* Tabla estilizada */
+.table {
+  background: white;
+  border-radius: 8px;
+  min-width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.table thead {
+  background: #2575fc;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  white-space: nowrap; /* Evita que el contenido se divida en varias líneas */
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Animación para el título */
+.animated-title {
+  animation: bounce 1s infinite alternate;
+}
+
+/* Keyframes para animación */
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
   .container {
-      max-width: 100%;
-    }
-
-  /* Fijar el título y el input en la parte superior */
-  .fixed-header {
-    position: sticky;
-    top: 0;
-    background: white;
-    z-index: 100;
-    padding: 10px 0;
-    text-align: center;
-  }
-  
-  /* Contenedor de la tabla para hacer scroll independiente */
-  .table-container {
-    max-height: 60vh;
-    overflow-y: auto;
-    width: 100%;
-  }
-  
-  /* Mejora la tabla en dispositivos pequeños */
-  .table-responsive {
-    overflow-x: auto;
-  }
-  
-  /* Estilos para el input de búsqueda */
-  .search-input {
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  /* Ajustes responsivos */
-  @media (max-width: 768px) {
-    .table-container {
-      max-height: 50vh;
-      overflow-y: auto;
-    }
-  
-    .table th,
-    .table td {
-      font-size: 14px;
-      padding: 8px;
-    }
-  }
-  
-  /* Estilos para pantallas grandes */
-  @media (min-width: 769px) {
-    .table-container {
-      max-height: none;
-      overflow-y: visible;
-    }
-  }
-  
-  /* Animaciones */
-  /* Animación de Rebote Suave */
-  @keyframes bounce {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
+    width: 95%;
+    padding: 15px;
   }
 
-  /* Animación al h2 */
-  .animated-title {
-    animation: bounce 1.5s ease-in-out infinite;
+  .table th,
+  .table td {
+    font-size: 14px;
+    padding: 8px;
   }
-
+}
