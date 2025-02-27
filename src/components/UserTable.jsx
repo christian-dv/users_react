@@ -18,7 +18,7 @@ export const UserTable = () => {
       .then(data => {
         setUsers(data);
         setFilteredUsers(data);
-      });
+      }).catch(error => console.error("Error: "+error));
   }, []);
 
   // Manejo de la búsqueda

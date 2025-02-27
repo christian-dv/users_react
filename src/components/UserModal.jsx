@@ -6,19 +6,19 @@ export const UserModal = ({ user, onClose }) => {
       <div className="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">Detalle de usuario</h5>
-            <button type="button" className="btn-close" onClick={onClose}></button>
+              <h5 className="modal-title">Detalle de usuario</h5>
+              <button type="button" className="btn-close" onClick={onClose}></button>
           </div>
           <div className="modal-body">
-            <p><strong>Nombre:</strong> {user.name}</p>
-            <p><strong>Correo Electrónico:</strong> {user.email}</p>
-            <p><strong>Telefono:</strong> {user.phone}</p>
-            <p><strong>Sitio Web:</strong> {user.website}</p>
-            <p><strong>Compañía:</strong> {user.company.name}</p>
-            <p><strong>Direccion:</strong> {user.address.street}, {user.address.city}</p>
+              <p><strong>Nombre:</strong> {user.name}</p>
+              <p><strong>Correo Electrónico:</strong> {user.email}</p>
+              <p><strong>Telefono:</strong> {user.phone}</p>
+              <p><strong>Sitio Web:</strong> {user.website}</p>
+              <p><strong>Compañía:</strong> {user.company.name}</p>
+              <p><strong>Direccion:</strong> {user.address.street}, {user.address.city}</p>
           </div>
           <div className="modal-footer">
-            <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
+              <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
           </div>
         </div>
       </div>
