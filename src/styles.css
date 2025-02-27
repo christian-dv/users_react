@@ -1,7 +1,6 @@
 /* Fondo con degradado*/
 body {
-  background: linear-gradient(to right, #6a11cb, #2575fc);
-  min-height: 100vh;
+  background: linear-gradient(to top, #6a11cb, #2575fc);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,6 +15,7 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   width: 100%;
   text-align: center;
+  height: 400px;
 }
 
 /* Input de búsqueda con bordes redondeados */
@@ -54,9 +54,16 @@ body {
 .table th,
 .table td {
   padding: 12px;
-  white-space: nowrap; /* Evita que el contenido se divida en varias líneas */
+  white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+/* Contenedor de la tabla */
+.table-responsive {
+  width: 100%;
+  max-width: 1000px;
+  overflow-x: hidden; /* Ocultar scroll en pantallas grandes */
 }
 
 /* Animación para el título */
@@ -70,16 +77,30 @@ body {
   100% { transform: translateY(-5px); }
 }
 
-/* Ajustes responsivos */
+/* Estilos para telefono */
+/* Habilitar scroll solo en pantallas pequeñas */
 @media (max-width: 768px) {
   .container {
-    width: 95%;
+    width: 88%;
     padding: 15px;
   }
 
   .table th,
   .table td {
-    font-size: 14px;
+    font-size: 10px;
     padding: 8px;
   }
+
+  .search-input {
+    font-size: 12px;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  .table {
+    min-width: 400px;
+  }
 }
+
