@@ -55,9 +55,8 @@ export const UserTable = () => {
       </div>
 
       {/* Contenedor de la tabla */}
-      <div className="table-container">
-        <div className="table-responsive">
-          <table className="table table-bordered table-hover text-center">
+      <div className="table-responsive">
+        <table className="table table-bordered table-hover text-center">
             <thead className="table-primary">
               <tr>
                 <th>Nombre</th>
@@ -86,8 +85,7 @@ export const UserTable = () => {
                 </tr>
               )}
             </tbody>
-          </table>
-        </div>
+        </table>
       </div>
 
       {/* Paginador */}
