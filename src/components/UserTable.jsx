@@ -44,7 +44,6 @@ export const UserTable = () => {
         <div className="row justify-content-center w-100 mb-3">
           <div className="d-flex justify-content-center">
             <input
-              style={{ border: "4px solid #ced4da" }}
               type="text"
               className="form-control search-input"
               placeholder="Busca por nombre..."

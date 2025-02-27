@@ -9,16 +9,22 @@ export const UserModal = ({ user, onClose }) => {
               <h5 className="modal-title">Detalle de usuario</h5>
               <button type="button" className="btn-close" onClick={onClose}></button>
           </div>
-          <div className="modal-body">
-              <p><strong>Nombre:</strong> {user.name}</p>
-              <p><strong>Correo Electrónico:</strong> {user.email}</p>
-              <p><strong>Telefono:</strong> {user.phone}</p>
-              <p><strong>Sitio Web:</strong> {user.website}</p>
-              <p><strong>Compañía:</strong> {user.company.name}</p>
-              <p><strong>Direccion:</strong> {user.address.street}, {user.address.city}</p>
+          <div className="modal-body d-flex">
+              <div className="mx-3">
+                      <img width="250px" src={`https://robohash.org/${user.name}`} alt="Avatar" className="img-fluid" />
+              </div>
+              <div className="flex-grow-1">
+                  <p><strong>Nombre:</strong> {user.name}</p>
+                  <p><strong>Correo Electrónico:</strong> {user.email}</p>
+                  <p><strong>Telefono:</strong> {user.phone}</p>
+                  <p><strong>Sitio Web:</strong> {user.website}</p>
+                  <p><strong>Compañía:</strong> {user.company.name}</p>
+                  <p><strong>Direccion:</strong> {user.address.street}, {user.address.city}</p>
+              </div>
+              
           </div>
           <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
+              <button type="button" className="btn btn-success" onClick={onClose}>Cerrar</button>
           </div>
         </div>
       </div>
