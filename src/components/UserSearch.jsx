@@ -8,7 +8,7 @@ export const UserSearch = ({ search, onSearchChange }) => {
         <input
           type="text"
           className="form-control search-input"
-          placeholder="Busca por nombre..."
+          placeholder="Search by name..."
           value={search}
           onChange={(e) => onSearchChange(e.target.value)}
         />

@@ -40,7 +40,7 @@ export const UserTable = () => {
     <div className="container d-flex flex-column align-items-center min-vh-100">
       {/* Sección fija para el título y el input */}
       <div className="fixed-header w-100">
-        <h2 className="text-center mt-3 mb-3 animated-title">Consulta de usuarios</h2>
+        <h2 className="text-center mt-3 mb-3 animated-title">User List</h2>
          {/* Uso del componente UserSearch */}
          <UserSearch search={search} onSearchChange={handleSearch} />
       </div>
@@ -50,10 +50,10 @@ export const UserTable = () => {
         <table className="table table-hover text-center">
             <thead className="table-info">
               <tr>
-                <th>Nombre</th>
-                <th>Correo Electrónico</th>
-                <th>Compañía</th>
-                <th>Detalle</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Company</th>
+                <th>Details</th>
               </tr>
             </thead>
             <tbody>
