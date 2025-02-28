@@ -72,7 +72,7 @@ export const UserTable = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="4" className="no-results">No se encontraron usuarios con el nombre proporcionado!</td>
+                  <td colSpan="4" className="no-results">No users found with the name provided!!</td>
                 </tr>
               )}
             </tbody>
