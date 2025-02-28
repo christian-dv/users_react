@@ -33,7 +33,6 @@ export const UserModal = ({ user, onClose }) => {
 };
 
 // Definir los tipos de las props
-// Necesario para evitar errores en tiempo de ejecución
 UserModal.propTypes = {
   user: PropTypes.shape({
     name: PropTypes.string.isRequired,

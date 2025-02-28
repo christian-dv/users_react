@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { UserModal } from './UserModal';
+import { UserSearch } from './UserSearch';
 
 export const UserTable = () => {
   // Estados para manejar los usuarios y la búsqueda
@@ -22,12 +23,11 @@ export const UserTable = () => {
   }, []);
 
   // Manejo de la búsqueda
-  const handleSearch = (e) => {
-    const value = e.target.value.toLowerCase();
-    setSearch(value);
-    const filtered = users.filter(user => user.name.toLowerCase().includes(value));
-    setFilteredUsers(filtered);
-    setCurrentPage(1); // Reinicia a la primera página cuando se busca algo nuevo
+  const handleSearch = (value) => {
+    const lowercasedValue = value.toLowerCase();
+    setSearch(lowercasedValue);
+    setFilteredUsers(users.filter((user) => user.name.toLowerCase().includes(lowercasedValue)));
+    setCurrentPage(1); // Reinicia la paginación cuando se busca
   };
 
   // Cálculo de paginación
@@ -41,23 +41,14 @@ export const UserTable = () => {
       {/* Sección fija para el título y el input */}
       <div className="fixed-header w-100">
         <h2 className="text-center mt-3 mb-3 animated-title">Consulta de usuarios</h2>
-        <div className="row justify-content-center w-100 mb-3">
-          <div className="d-flex justify-content-center">
-            <input
-              type="text"
-              className="form-control search-input"
-              placeholder="Busca por nombre..."
-              value={search}
-              onChange={handleSearch}
-            />
-          </div>
-        </div>
+         {/* Uso del componente UserSearch */}
+         <UserSearch search={search} onSearchChange={handleSearch} />
       </div>
 
       {/* Contenedor de la tabla */}
       <div className="table-responsive">
-        <table className="table table-bordered table-hover text-center">
-            <thead className="table-primary">
+        <table className="table table-hover text-center">
+            <thead className="table-info">
               <tr>
                 <th>Nombre</th>
                 <th>Correo Electrónico</th>
@@ -103,6 +94,7 @@ export const UserTable = () => {
         </nav>
       )}
 
+      {/* Modal de detalle de usuario */}
       {selectedUser && <UserModal user={selectedUser} onClose={() => setSelectedUser(null)} />}
     </div>
   );
